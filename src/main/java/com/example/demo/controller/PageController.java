@@ -38,20 +38,17 @@ public class PageController {
 	public String generalPath(@RequestParam(value = "a", required = false, defaultValue = "0") Integer a, @RequestParam(value = "b", required = false, defaultValue = "0") Integer b, Model model) {
 		model.addAttribute("a", a);
 		model.addAttribute("b", b);
-		if(a <= 1 && b <= 1) {
-			model.addAttribute("result", "hm");
-		}else {
-			String temp = "h";
-			for (int i = 1; i < a; i++) {
-				temp += "m";
-			}
+		
+		String temp = "hm";
+		for (int i = 1; i < a; i++) {
 			temp += "m";
-			String result = temp;
-			for (int i = 1; i < b; i++) {
-				result += " " + temp;
-			}
-			model.addAttribute("result", result);
 		}
+		
+		String result = temp;
+		for (int i = 1; i < b; i++) {
+			result += " " + temp;
+		}
+		model.addAttribute("result", result);
 		return "generator";
 	}
 }
